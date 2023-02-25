@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link active" aria-current="page" href="{{ url_for('auth.signup') }}">Sign Up</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.progression') }}">Progression Dashboard</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+	</li>
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<h3 class="title">Sign Up</h3>
+<br>
+<form method="POST" action="/signup">
+        <div class="form-floating mb-3">
+		<input type="text" class="form-control" name="name" id="floatingInput2" placeholder="Name" >
+		<label for="floatingInput2" >Name</label>
+        </div>
+
+	<div class="form-floating mb-3">
+        	<input type="email" class="form-control" name="email" id="floatingInput" placeholder="Email">
+		<label for="floatingInput" >Email</label>
+        </div>
+      	
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" name="username" id="floatingInput3" placeholder="Username" >
+		<label for="floatingInput3" >Username</label>
+	</div>
+
+        <div class="form-floating mb-3">
+                <input class="form-control" type="password" name="password" id="floatingInput4" placeholder="Password">
+		<label for="floatingInput4" >Password</label>
+        </div>
+        
+	<input class="btn btn-dark" type="Submit" value="Sign Up"/>
+</form>
+{% endblock %}

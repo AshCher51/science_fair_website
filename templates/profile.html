@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link active" aria-current="page" href="{{ url_for('main.profile') }}">Profile</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.progression') }}">Progression Dashboard</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+	</li>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">
+	Welcome, {{ current_user.name }}!
+</h1>
+
+<br>
+<h3 class="title">Update Profile Info:</h3>
+
+<form method="POST" action="/profile">
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" name="name" id="floatingInput" placeholder="name" value="{{ current_user.name  }}">
+		<label for="floatingInput" >Name</label>
+	</div>
+
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" name="email" id="floatingInput2" placeholder="email" value="{{ current_user.email }}">
+		<label for="floatingInput2" >Email</label>
+	</div>
+	<input class="btn btn-dark" type="Submit" value="Update Profile Info" />
+</form>
+<br><br>
+<form method="POST" action="/profile">
+	<div class="form-floating mb-3">
+		<input type="password" class="form-control" name="password" id="floatingInput3" placeholder="password">
+		<label for="floatingInput" >Password</label>
+	</div>
+	<input class="btn btn-dark" type="Submit" value="Update Password" />
+</form>
+{% endblock %}

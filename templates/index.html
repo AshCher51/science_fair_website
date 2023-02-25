@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<li class="nav-item">
+		<a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Home</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.progression') }}">Progression Dashboard</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+	</li>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">
+	Disease Progression Tracker
+</h1>
+<h3 class="subtitle">
+	E-14A Project
+</h3>
+{% endblock %}

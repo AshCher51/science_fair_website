@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block header %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.signup') }}">Sign Up</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link active" aria-current="page" href="{{ url_for('main.progression') }}">Progression Dashboard</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+	</li>
+{% endblock %}
+
+{% block body %}
+<h1 class="title">
+	Disease Progression Results
+</h1>
+
+<br>
+
+<h2>Past Disease Progression Trajectory</h2>
+<img src="data:image/png;base64,{{ image_data }}">
+<h2>Prediction for ADAS13 at the next month</h2>
+<p>{{ pred }}</p>
+
+{% endblock %}
